@@ -4,11 +4,10 @@ import { Button } from "./_components/ui/button"
 import { Input } from "./_components/ui/input"
 import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
-import { Badge } from "./_components/ui/badge"
-import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import { quickSearchOptions } from "./_constants/search"
+import BookingItem from "./_components/booking-item"
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
@@ -55,33 +54,10 @@ const Home = async () => {
             className="rounded-xl object-cover"
           />
         </div>
-        {/* Agendamento */}
-        <h2 className="mb-3 mt-6 text-sm font-bold uppercase text-gray-400">
-          Agendamentos
-        </h2>
         <div>
-          <Card>
-            <CardContent className="flex justify-between p-0">
-              {/* Esqyerda */}
-              <div className="flex flex-col gap-2 py-5 pl-5">
-                <Badge className="w-fit">Confirmado</Badge>
-                <h3 className="font-semiboldbold">Corte de Cabelo</h3>
-                {/* Avatar */}
-                <div className="flex items-center gap-2">
-                  <Avatar className="h-6 w-6">
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                  </Avatar>
-                  <p className="text-sm">Barbearia FSW</p>
-                </div>
-              </div>
-              {/* Direita */}
-              <div className="flex flex-col items-center justify-center border-l-2 border-solid px-5">
-                <p className="text-sm">Agosto</p>
-                <p className="text-2xl">05</p>
-                <p className="text-sm">20:00</p>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Agendamentos */}
+          <BookingItem />
+
           {/* Listagem de Barbearias */}
           <h2 className="mb-3 mt-6 text-sm font-bold uppercase text-gray-400">
             Recomendados
